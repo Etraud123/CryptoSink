@@ -1,0 +1,95 @@
+<!--
+'  ██████╗ ██╗     ██╗██████╗     ███╗   ███╗ █████╗ ██████╗ ██╗      █████╗ ██████╗ ███████╗
+'  ██╔══██╗██║     ██║██╔══██╗    ████╗ ████║██╔══██╗██╔══██╗██║     ██╔══██╗██╔══██╗██╔════╝
+'  ██████╔╝██║     ██║██████╔╝    ██╔████╔██║███████║██║  ██║██║     ███████║██████╔╝███████╗
+'  ██╔══██╗██║     ██║██╔═══╝     ██║╚██╔╝██║██╔══██║██║  ██║██║     ██╔══██║██╔══██╗╚════██║
+'  ██████╔╝███████╗██║██║         ██║ ╚═╝ ██║██║  ██║██████╔╝███████╗██║  ██║██████╔╝███████║
+'  ╚═════╝ ╚══════╝╚═╝╚═╝         ╚═╝     ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝
+'  (0x) 52656e61746f20526f64726967756573204073696d7073306e0d0a426c69702e7074202f204f504f                                                                                         
+-->	
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{meta_description}}">
+	<meta name="author" content="{{meta_author}}">
+    <title>{{title}}</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/jumbotron-narrow.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li></span><a href="/"  rel="tooltip" data-placement="left" title="Home"><span class="glyphicon glyphicon-home"></a></li>
+          <li class="active"></span><a href="/login"  rel="tooltip" data-placement="bottom" title="Login"><span class="glyphicon glyphicon-user"></a></li>
+          <li><a href="mailto:renato.rodrigues@blip.pt?subject=Blip MadLabs" rel="tooltip" data-placement="right" title="Contact"><span class="glyphicon glyphicon-envelope"></span></a></li>
+        </ul>
+        <h3 class="text-muted">TWFkTGFicw==</h3>
+      </div>
+
+    <div class="container-fluid">
+		<div class="row">
+			<div class="col-md-2"></div>
+				
+		<div class="col-md-8">
+			<form class="form-horizontal " method="POST" action="/login/"> {% csrf_token %}
+				<div class="form-group">
+					<label for="inputEmail">Email</label>
+					<input class="form-control" type="text" id="inputEmail" placeholder="johndoe@mail.com" name="username" required>
+				</div>
+				<div class="form-group">
+					<label for="inputPassword">Password</label>
+					<input class="form-control" type="password" id="inputPassword" placeholder="***********" name="passwd" required>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-large btn-primary">Sign in</button>
+				</div>
+				<div class="form-group">
+					Don't have an account? <a href="/register">Sign up here</a>
+					<hr>
+					By signing up you are agreeing to our <a href="#">Terms & Conditions</a>.
+				</div>
+			</form>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+
+			{% if login_error %}
+			<div class="row">
+				<div class="alert alert-{{login_error.level}} col-md-12">
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					<strong>{{login_error.title}}</strong> {{login_error.message}}
+				</div>
+			</div>
+			{% endif %}
+      <div class="footer">
+        <p>&copy; Blip 2014</p>
+      </div>
+		</div>
+		<script>
+			window.setTimeout(function() { $(".alert").fadeTo(500, 0).slideUp(500, function(){$(this).remove(); });	}, 3000);
+		</script>
+		<!--<script src="/js/bootstrap-alert.js"></script>-->
+
+	<script type="text/javascript">
+		$(function () {
+			$("[rel='tooltip']").tooltip();
+		});
+	</script>
+  </body>
+</html>
